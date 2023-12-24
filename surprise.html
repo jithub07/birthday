@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Greeting Card</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      background: linear-gradient(135deg, #502c2c, #000000);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .card { 
+      display: none;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 600px;
+    }
+    h1 {
+      color: #ff2600;
+    }
+    p {
+      font-size: 18px;
+      color: #333;
+    }
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+    .love {
+      font-size: 30px;
+      color: #000000;
+    }
+    .SURPRISE {
+      animation: heartbeat 1s infinite;
+      background-color: #0862d6;
+      color: white;
+      padding: 20px 30px;
+      font-size: 24px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .SURPRISE {
+        padding: 15px 20px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="birthdayCard">
+    <h1>Happy Birthday</h1>
+    <p>Many more happy returns of the day, BIRIYANI ATHA</p>
+    <img src="atha.jpg" alt="AthA's Birthday">
+    <p>MERRY CHRISTMAS</p>
+    <!-- Audio element with an empty source, to be filled with the actual source dynamically -->
+    <audio id="backgroundAudio" loop style="display: none;">
+        <source src="C:\\Users\\Dell\\Desktop\\birthday\\background-music.mp3" type="audio/mp3">
+    </audio>
+    <audio id="birthdayAudio" style="display: none;">
+        <source src="C:\\Users\\Dell\\Desktop\\birthday\\hbd.mp3" type="audio/mp3">
+    </audio>
+  </div>
+
+  <button class="SURPRISE" id="surpriseButton" onclick="revealPage()">SURPRISE ATHA</button>
+
+  <script>
+    function revealPage() {
+      var card = document.getElementById("birthdayCard");
+      var button = document.getElementById("surpriseButton");
+      var backgroundAudio = document.getElementById("backgroundAudio");
+      var birthdayAudio = document.getElementById("birthdayAudio");
+      
+      // Play the background audio
+      backgroundAudio.play();
+
+      // Set the source of the birthday audio dynamically
+      birthdayAudio.src = "hbd.mp3";
+
+      // Play the birthday audio
+      birthdayAudio.play();
+
+      card.style.display = "block";
+      button.style.display = "none"; // Hide the button after revealing the card
+    }
+  </script>
+</body>
+</html>
